@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: knative-demo-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: knative-demo
+    spec:
+      containers:
+      - name: knative-demo
+        image: us.icr.io/functions-knative/knative_demo
+        ports:
+        - containerPort: 8080
